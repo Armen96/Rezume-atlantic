@@ -315,22 +315,30 @@
                                     <div class="skill-percentage skill-5"></div>
                                 </div>
 
-                                <h4>Angular,React,Vue.js,Node.js,Express.js</h4>
+                                <h4>Vue.js, Angular,React.js</h4>
                                 <div class="skill-container">
                                     <div class="skill-percentage skill-6"></div>
                                 </div>
 
-                                <h4>Git,GitHub,Bitbucket</h4>
+                                <h4>Node.js,Express.js</h4>
+                                <div class="skill-container">
+                                    <div class="skill-percentage skill-6"></div>
+                                </div>
+
+                                <h4>Git,GitHub,GitLab,Bitbucket</h4>
                                 <div class="skill-container">
                                     <div class="skill-percentage skill-5"></div>
                                 </div>
 
-                                <h4>Amazon Web Services</h4>
+                                <h4>Amazon Web Services,Heroku</h4>
                                 <div class="skill-container">
                                     <div class="skill-percentage skill-5"></div>
                                 </div>
 
-
+                                <h4>Continuous Integration, Jenkins</h4>
+                                <div class="skill-container">
+                                    <div class="skill-percentage skill-5"></div>
+                                </div>
 
                             </div>
                         </div>
