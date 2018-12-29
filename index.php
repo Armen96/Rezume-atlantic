@@ -92,7 +92,7 @@
                 <ul class="social-links">
                     <li><a class="tip social-button" target="_blank" href="https://twitter.com/Armen369T?lang=en" title="Twitter"><i class="fab fa-twitter-square"></i></a></li> <!-- Full list of social icons: http://fontawesome.io/icons/#brand -->
                     <li><a class="tip social-button" target="_blank" href="https://www.facebook.com/armen.barseghyan.58" title="Facebook"><i class="fab fa-facebook-square"></i></a></li>
-                    <li><a class="tip social-button" target="_blank" href="https://plus.google.com/101976583328119318806" title="Google Plus"><i class="fab fa-google-plus-square"></i></a></li>
+                    <li><a class="tip social-button" target="_blank" href="https://github.com/Armen96" title="Google Plus"><i class="fab fa-github-square"></i></a></li>
                     <li><a class="tip social-button" target="_blank" href="https://www.linkedin.com/in/armen-barsegyan-357336147/" title="Linkedin"><i class="fab fa-linkedin"></i></a></li>
                 </ul>
                 <!-- /Social buttons -->
