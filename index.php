@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>HipRez | Armen Barsegyan</title>
+    <title>Atlantic | Armen Barsegyan</title>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
     <meta name="description" content="HipRez Resume Page" />
     <meta name="keywords" content="HipRez, Resume Page, Personal Page, Professional Website" />
@@ -252,21 +252,18 @@
                                     <h5 class="event-date">2016 - 2017</h5>
                                     <h4 class="event-name">Code-Developer</h4>
                                     <span class="event-description">Back-End Developer</span>
-                                    <p>Start understanding that I don’t know nothing about programming</p>
                                 </div>
                                 <!-- Single event -->
                                 <div class="timeline-event te-primary">
                                     <h5 class="event-date">2017 - 2018</h5>
                                     <h4 class="event-name">Webmozart</h4>
                                     <span class="event-description">Full-Stack Developer</span>
-                                    <p>Start understanding that I don’t know nothing about programming</p>
                                 </div>
                                 <!-- Single event -->
                                 <div class="timeline-event te-primary">
                                     <h5 class="event-date">2018 - Current</h5>
                                     <h4 class="event-name">Smart Corner</h4>
                                     <span class="event-description">Full-Stack Developer</span>
-                                    <p>Nothing changed <i class="far fa-smile-wink"></i></p>
                                 </div>
                             </div>
                         </div>
