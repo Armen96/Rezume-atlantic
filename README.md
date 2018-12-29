@@ -1,2 +1,0 @@
-# Rezume-atlantic
-Rezume Template

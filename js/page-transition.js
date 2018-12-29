@@ -1,18 +1,14 @@
 /*
-* Template Name: PRO Card - Material Resume / CV / vCard Template
-* Author: lmpixels
+* Template Name: Sunshine - Responsive vCard Template
+* Author: LMPixels (Linar Miftakhov)
 * Author URL: http://themeforest.net/user/lmpixels
 * Version: 1.0
 */
 
-var PageTransitions = (function ($, options) {
+var PageTransitions = (function ($) {
 "use strict";
-    var defaultStartPage = "home",
-        sectionsContainer = $(".subpages"),
-        isAnimating = false,
-        endCurrentPage = true,
-        endNextPage = false,
-        windowArea = $(window),
+
+    var startPageIndex = 0,
         animEndEventNames = {
             'WebkitAnimation'   : 'webkitAnimationEnd',
             'OAnimation'        : 'oAnimationEnd',
@@ -26,6 +22,35 @@ var PageTransitions = (function ($, options) {
         // support css animations
         support = Modernizr.cssanimations;
 
+    function ajaxLoader() {
+        // Check for hash value in URL
+        var hash = location.hash.substr(1);
+        var ajaxLoadedContent = $('#page-ajax-loaded');
+
+        function showContent() {
+            ajaxLoadedContent.removeClass('fadeOutLeft');
+            ajaxLoadedContent.show();
+            ajaxLoadedContent.addClass('fadeInLeft');
+        }
+
+        var href = $('#portfolio_grid figure a').each(function(){
+            href = $(this).attr('href');
+            if(hash=='portfolio' + '/' + href.substr(0,href.length-5)){
+                var toLoad =  $(this).attr('href');
+                showContent();
+                ajaxLoadedContent.load(toLoad);
+                return false;
+            } 
+        });
+        
+        // Show Portfolio item
+        $('.subpages .ajax-page-load').click(function(){
+            var toLoad = $(this).attr('href');
+            window.location.hash = 'portfolio' + '/' + $(this).attr('href').substr(0,$(this).attr('href').length-5);
+            return false;
+        });
+    }
+
     function init(options) {
 
         // Get all the .pt-page sections.
@@ -35,129 +60,94 @@ var PageTransitions = (function ($, options) {
         });
 
         // Get all the .pt-wrapper div which is the parent for all pt-div
-        sectionsContainer.each( function() {
-            if (location.hash === "") {
-                $('section[data-id='+ pageStart +']').addClass('pt-page-current');
-            }
+        $('.subpages').each( function() {
+            var $wrapperDiv = $(this);
+            $wrapperDiv.data('current', 0);
+            $wrapperDiv.data('isAnimating', false);
+            $wrapperDiv.children('.pt-page').eq(startPageIndex).addClass('pt-page-current');
         });
 
         // Adding click event to main menu link
-        $('.pt-trigger').on("click", function (e) {
-            e.preventDefault();
-            if (isAnimating) {
-                return false;
-            }
+        $('.pt-trigger').click(function() {
             var pageTrigger = $(this);
-
-            activeMenuItem( pageTrigger );
-
-            Animate( pageTrigger );
-
-            location.hash = $(this).attr('href');
-
+            Animate(pageTrigger);
+            $(menu+' li').removeClass('active');
+            $(this.parentNode).addClass('active');
+            $('.pt-wrapper').animate({scrollTop:0},300);
         });
 
         window.onhashchange = function(event) {
             if(location.hash) {
-                if (isAnimating) {
-                    return false;
-                }
-                var menuLink = $(menu+' a[href*="'+location.hash.split('/')[0]+'"]');
-                activeMenuItem( menuLink );
+                $(menu+' li').removeClass('active');
+                var menuLink = $(menu+' a[href*="'+location.hash.split('/')[0]+'"]'),
+                    navLink = menuLink['0'];
+                navLink = $(navLink.parentNode);
+                navLink.addClass('active');
+
                 Animate(menuLink);
+
+                $('.pt-wrapper').animate({scrollTop:0},300);
+
+                $('#page-ajax-loaded').addClass('fadeOutLeft');
+                $('#page-ajax-loaded > div').detach();
 
                 ajaxLoader();
             }
         };
 
         var menu = options.menu,
-        pageStart = getActiveSection();
+        pageStart = getActivePage();
 
-        location.hash = pageStart;
-        var menuLink = $(menu+' a[href*="'+location.hash.split('/')[0]+'"]');
+        if (location.hash === "") {
+            location.hash = pageStart;
+            var menuLink = $(menu+' a[href*="'+location.hash.split('/')[0]+'"]'),
+                navLink = menuLink['0'];
+            navLink = $(navLink.parentNode);
+            navLink.addClass('active');
+        } else {
+            var menuLink = $(menu+' a[href*="'+pageStart+'"]'),
+                navLink = menuLink['0'];
+            navLink = $(navLink.parentNode);
+            navLink.addClass('active');
+            Animate(menuLink);
+        }
 
-        activeMenuItem(menuLink);
 
-        Animate(menuLink);
-
-        $('body').append('<div id="page-ajax-loaded" class="page-ajax-loaded animated rotateInDownRight"></div>');
+        $('#page').append('<div id="page-ajax-loaded" class="page-ajax-loaded animated fadeInLeft"></div>');
         ajaxLoader();
+
+        $(document).on("click","#portfolio-close-button", function () {
+            $('#page-ajax-loaded').addClass('fadeOutLeft');
+            $('#page-ajax-loaded > div').detach();
+        });
     }
 
-    function getActiveSection() {
-        if(location.hash === "") {
-            return location.hash = defaultStartPage;
+    function getActivePage(page) {
+
+        if(location.hash !== "") {
+            return location.hash.split('/')[0];
+        } 
+        else if(page) {
+            return page;
         } 
         else {
-            return location.hash;
+            return '#'+$(".pt-page-current").attr('data-id');
         }
+
     }
 
-    function activeMenuItem(item) {
-        if ( !item ) {
+    // All pt-trigger click event calls this function
+    // This function gets the animation id, goto page that we define in `data-animation` and 'data-goto' repectively.
+    function Animate($pageTrigger) {
+
+        // Checking for 'data-animation' and 'data-goto' attributes.
+        if (!($pageTrigger.attr('data-animation'))) {
+            alert("Invalid attribute configuration. \n\n 'data-animation' attribute not found");
             return false;
         }
-
-        var navLink = $(item);
-        navLink = navLink['0'];
-        navLink = $(navLink.parentNode);
-            
-        if(navLink) {
-            $('ul.site-main-menu li').removeClass('active');
-            navLink.addClass('active');
-        }
-    }
-
-    function ajaxLoader() {
-        // Check for hash value in URL
-        var ajaxLoadedContent = $('#page-ajax-loaded');
-
-        function showContent() {
-            ajaxLoadedContent.removeClass('rotateOutDownRight closed');
-            ajaxLoadedContent.show();
-            $('body').addClass('ajax-page-visible');
-        }
-
-        function hideContent() {
-            $('#page-ajax-loaded').addClass('rotateOutDownRight closed');
-            $('body').removeClass('ajax-page-visible');
-            setTimeout(function(){
-                $('#page-ajax-loaded.closed').html('');
-                ajaxLoadedContent.hide();
-            }, 500);
-        }
-
-        var href = $('.ajax-page-load').each(function(){
-            href = $(this).attr('href');
-            if(location.hash == location.hash.split('/')[0] + '/' + href.substr(0,href.length-5)){
-                var toLoad =  $(this).attr('href');
-                showContent();
-                ajaxLoadedContent.load(toLoad);
-                return false;
-            }
-        });
-
-        $(document)
-            .on("click",".site-main-menu, #ajax-page-close-button", function (e) { // Hide Ajax Loaded Page on Navigation cleck and Close button
-                e.preventDefault();
-                hideContent();
-                location.hash = location.hash.split('/')[0];
-            })
-            .on("click",".ajax-page-load", function () { // Show Ajax Loaded Page
-                var hash = location.hash.split('/')[0] + '/' + $(this).attr('href').substr(0,$(this).attr('href').length-5);
-                location.hash = hash;
-                showContent();
-
-                return false;
-            });
-    }
-
-    function Animate($pageTrigger, gotoPage) {
-
-        // Checking for 'data-animation' attribute.
-        if (!($pageTrigger.attr('data-animation'))) {
-            var animNumber = parseInt(Math.floor(Math.random() * 67) + 1);
-            $pageTrigger.data('animation',animNumber);
+        else if (!($pageTrigger.attr('data-goto'))) {
+            alert("Invalid attribute configuration. \n\n 'data-goto' attribute not found");
+            return false;
         }
 
         var animation = $pageTrigger.data('animation').toString(),
@@ -450,40 +440,77 @@ var PageTransitions = (function ($, options) {
         }
 
         // This will get the pt-trigger elements parent wrapper div
-        var $pageWrapper = sectionsContainer,
-            currentPageId = $pageWrapper.data('current'), tempPageIndex,
-            linkhref = $pageTrigger.attr('href').split("#"),
-            gotoPage = linkhref[1];
+        var $pageWrapper = $('.subpages');
+        var currentPageIndex = $pageWrapper.data('current'), tempPageIndex,
+            $pages = $pageWrapper.children('section.pt-page'),
+            pagesCount = $pages.length,
+            endCurrentPage = false,
+            endNextPage = false;
+
+        gotoPage = parseInt($pageTrigger.data('goto'));
+
+        // check if 'data-goto' value is greater than total pages inside 'pt-wrapper'
+        if (pagesCount >= gotoPage) {
             
-            tempPageIndex = currentPageId;
+            tempPageIndex = currentPageIndex;
+
+            if($pageWrapper.data('isAnimating')) {
+                return false;
+            }
+
+            // Setting the isAnimating property to true.
+            $pageWrapper.data('isAnimating', false);
 
             // Current page to be removed.
-            var $currentPage = $('section[data-id="' + currentPageId + '"]');
+            var $currentPage = $pages.eq(currentPageIndex);
 
+            // Checking gotoPage value and decide what to do
+            // -1 Go to next page
+            // -2 Go to previous page
+            // 0+ Go to custom page number.
             // NEXT PAGE
-            currentPageId = gotoPage;
+            if (gotoPage == -1) {
+
+                // Incrementing page counter to diplay next page
+                if(currentPageIndex < pagesCount - 1) {
+                    ++currentPageIndex;
+                }
+                else {
+                    currentPageIndex = 0;
+                }
+            }
+            // PREVOUS PAGE
+            else if (gotoPage == -2) {
+                if (currentPageIndex === 0){
+                    currentPageIndex = pagesCount - 1;
+
+                }
+                else if(currentPageIndex <= pagesCount - 1 ) {
+                    --currentPageIndex;
+                }
+                else {
+                    currentPageIndex = 0;
+                }
+
+            }
+            // GOTO PAGE
+            else {
+                currentPageIndex = gotoPage - 1 ;
+            }
 
             // Check if the current page is same as the next page then do not do the animation
             // else reset the 'isAnimatiing' flag
-            if (tempPageIndex != currentPageId) {
-                isAnimating = true;
-
-                $pageWrapper.data('current', currentPageId);
+            if (tempPageIndex != currentPageIndex) {
+                $pageWrapper.data('current', currentPageIndex);
 
                 // Next page to be animated.
-
-                var $nextPage = $('section[data-id='+currentPageId+']').addClass('pt-page-current');
-
-                windowArea.scrollTop(0);
-                var subpagesHeight = windowArea.height();
-                $(".subpages").height(subpagesHeight + 50); //50 is the bottom margin value of the pt-page, in the main.css file
+                var $nextPage = $pages.eq(currentPageIndex).addClass('pt-page-current');
 
                 $currentPage.addClass(outClass).on(animEndEventName, function() {
                     $currentPage.off(animEndEventName);
                     endCurrentPage = true;
                     if(endNextPage) {
                         onEndAnimation($pageWrapper, $nextPage, $currentPage);
-                        endCurrentPage = false;
                     }
                 });
 
@@ -492,28 +519,31 @@ var PageTransitions = (function ($, options) {
                     endNextPage = true;
                     if(endCurrentPage) {
                         onEndAnimation($pageWrapper, $nextPage, $currentPage);
-                        endNextPage = false;
-                        isAnimating = false;
                     }
                 });
 
             }
             else {
-                isAnimating = false;
+                $pageWrapper.data('isAnimating', false);
             }
 
+        }
+        else {
+            alert("Transition.js : Invalid 'data-goto' attribute configuration.");
+        }
 
         // Check if the animation is supported by browser and reset the pages.
         if(!support) {
             onEndAnimation($currentPage, $nextPage);
         }
 
+        
+
     }
 
     function onEndAnimation($pageWrapper, $nextPage, $currentPage) {
-        var subpagesHeight = $nextPage.height();
-        $(".subpages").height(subpagesHeight + 50); //50 is the bottom margin value of the pt-page, in the main.css file
         resetPage($nextPage, $currentPage);
+        $pageWrapper.data('isAnimating', false);
     }
 
     function resetPage($nextPage, $currentPage) {
@@ -526,3 +556,14 @@ var PageTransitions = (function ($, options) {
     };
 
 })(jQuery);
+
+$(document).ready(function() {
+    "use strict";
+    // initializing page transition.
+    var ptPage = $('.subpages');
+    if (ptPage[0]) {
+        PageTransitions.init({
+            menu: 'ul.site-main-menu',
+        });
+    }
+});
