@@ -75,15 +75,15 @@
                 <ul id="nav" class="site-main-menu">
                     <!-- About Me Subpage link -->
                     <li>
-                        <a class="pt-trigger" href="index.html#about_me" data-animation="58" data-goto="1">About me</a><!-- href value = data-id without # of .pt-page -->
+                        <a class="pt-trigger" href="#about_me" data-animation="58" data-goto="1">About me</a><!-- href value = data-id without # of .pt-page -->
                     </li>
                     <!-- /About Me Subpage link -->
                     <li>
-                        <a class="pt-trigger" href="index.html#resume" data-animation="59" data-goto="2">Resume</a>
+                        <a class="pt-trigger" href="#resume" data-animation="59" data-goto="2">Resume</a>
                     </li>
 
                     <li>
-                        <a class="pt-trigger" href="index.html#contact" data-animation="60" data-goto="5">Contact</a>
+                        <a class="pt-trigger" href="#contact" data-animation="60" data-goto="5">Contact</a>
                     </li>
                 </ul>
                 <!-- /Main menu -->
