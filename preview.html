@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title></title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="../../libs/font-awesome/css/font-awesome.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <style type="text/css">
+        body {
+            margin: 0;
+            font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+        }
+        .preview__header {
+            font-size: 12px;
+            height: 54px;
+            background-color: #181F4A;
+            z-index: 100;
+            line-height: 54px;
+            overflow: hidden;
+        }
+        .preview__envato-logo {
+            float: left;
+            padding: 10px 20px;
+            padding-top: 9px;
+            padding-bottom: 9px;
+            margin-left: 9%;
+        }
+        .preview__envato-logo img {
+            height: 36px;
+        }
+        .preview__actions {
+            float: right;
+            height: 54px;
+        }
+        .preview__action--buy, .preview__action--close {
+            display: inline-block;
+            padding: 0 20px;
+            height: 54px;
+            margin-right: 30px;
+        }
+        .preview__action--buy a {
+            cursor: pointer;
+            margin-right: 20px;
+            font-size: 15px;
+            transition-property: background-color,border-color,color,box-shadow,filter;
+            transition-duration: .3s;
+        }
+        .preview__action--buy a:hover {
+            color: white;
+        }
+        .preview__action--close {
+            border-left: 1px solid #333333;
+            padding-left: 50px;
+        }
+        .preview__action--close a {
+            color: #999999;
+            text-decoration: none;
+            font-size: 12px;
+            cursor: pointer;
+        }
+        .preview__actions button {
+            /*background-color: #1bc873;*/
+          /*  border-color:#181F4A!important;*/
+            background-color: transparent;
+            border-radius: 25px;
+            font-size: 14px;
+            padding: 8px 18px;
+            transition-property: background-color,border-color,color,box-shadow,filter;
+            transition-duration: .3s;
+        }
+        .reload_resume_page:hover{
+            color:#fff!important;
+        }
+        .reload_resume_page:hover > .reload_resume_page a { color: #fff!important; }
+        .reload_resume_page:hover + .reload_resume_page a { color: #fff!important; }
+        .preview__actions button:hover {
+            color:#fff!important;
+            background-color: #109a56;
+            transition: all 0.5s;
+        }
+        .preview__action--close a:hover {
+            color: #fff;
+        }
+        .preview__action--close i {
+            color: white;
+            font-size: 20px;
+        }
+        .reload_resume_page a{
+            color: #ffffff;
+            font-size: 14px!important;
+            margin-right: 0px!important;
+            text-decoration: none;
+        }
+        .reload_resume_page a:hover{
+            color:#fff;
+        }
+        .a_get_resume_page{
+            font-family: Lato_Regular;
+            font-size: 18px!important;
+            cursor: pointer;
+            margin-right: 20px;
+            color:white;
+            transition-property: background-color,border-color,color,box-shadow,filter;
+            transition-duration: .3s;
+        }
+
+        iframe {
+            width: 100%;
+            height: 100%;
+            border: 0;
+            height: 100vh;
+        }
+        @media(max-width: 1000px) {
+            .preview__envato-logo {
+                margin-left: 20px;
+            }
+            .preview__action--close {
+                margin-right: 0;
+                padding-left: 20px;
+            }
+        }
+        @media(max-width: 767px) {
+            .preview__header {
+                height: auto;
+                line-height: initial;
+                padding: 8px 0px;
+            }
+            .preview__envato-logo {
+                float: none;
+                padding: 5px;
+                margin-left: 5px;
+                vertical-align: middle;
+                display: inline-block;
+            }
+            .preview__envato-logo img {
+                height: 22px;
+            }
+            .preview__actions {
+                display: inline-block;
+                float: none;
+                height: auto;
+            }
+            .preview__action--close {
+                border-left: 0;
+                position: absolute;
+                top: 5px;
+                right: 0;
+                margin-right: 0;
+                padding: 0 8px;
+            }
+            .preview__action--buy {
+                padding: 8px 8px 10px 8px;
+                margin-right: 0;
+                height: auto;
+                display: block;
+            }
+            .preview__action--buy a {
+                font-size: 12px;
+                margin-right: 5px;
+            }
+            .preview__actions {
+                display: block;
+            }
+            .preview__actions button {
+                float: right;
+                margin-top: -9px;
+                font-size: 10px;
+                padding: 8px;
+            }
+        }
+    </style>
+</head>
+<body>
+<div class="preview__header">
+    <div class="preview__envato-logo">
+        <img src="../../assets/images/logo.png" class="img-responsive">
+    </div>
+    <div class="preview__actions">
+        <div class="preview__action--buy">
+            <a href="http://hiprez.com/#!/resume" class="a_get_resume_page hidden-xs"> Get Preview With Your Information</a>
+            <button class="btn btn-success reload_resume_page">
+                <a href="/#!/resume">
+                    SELECT TEMPLATE
+                </a>
+            </button>
+        </div>
+        <div class="preview__action--close">
+            <a href="index.html">
+                <span style="color: #fff;font-weight: 700;font-size: 17px;">X</span>
+            </a>
+        </div>
+    </div>
+</div>
+<iframe src="index.html"></iframe>
+</body>
+</html>
