@@ -306,7 +306,7 @@
                                     <div class="skill-percentage skill-4"></div>
                                 </div>
 
-                                <h4>SQL, NoSQL, (MySql,PostgreSql,MongoDB), GraphQL</h4>
+                                <h4>SQL, NoSQL, (MySql,PostgreSql,MongoDB)</h4>
                                 <div class="skill-container">
                                     <div class="skill-percentage skill-1"></div>
                                 </div>
@@ -316,27 +316,22 @@
                                     <div class="skill-percentage skill-5"></div>
                                 </div>
 
-                                <h4>Vue.js, Angular,React.js</h4>
-                                <div class="skill-container">
-                                    <div class="skill-percentage skill-6"></div>
-                                </div>
-
                                 <h4>Node.js,Express.js</h4>
                                 <div class="skill-container">
                                     <div class="skill-percentage skill-6"></div>
                                 </div>
 
-                                <h4>Git,GitHub,GitLab,Bitbucket</h4>
+                                <h4>Vue.js,Vuex,Vutify,Angular,Apollo GraphQL</h4>
+                                <div class="skill-container">
+                                    <div class="skill-percentage skill-4"></div>
+                                </div>
+
+                                <h4>Git,GitHub,Bitbucket</h4>
                                 <div class="skill-container">
                                     <div class="skill-percentage skill-5"></div>
                                 </div>
 
-                                <h4>Amazon Web Services,Heroku</h4>
-                                <div class="skill-container">
-                                    <div class="skill-percentage skill-5"></div>
-                                </div>
-
-                                <h4>Continuous Integration, Jenkins</h4>
+                                <h4>Amazon Web Services, Jenkins</h4>
                                 <div class="skill-container">
                                     <div class="skill-percentage skill-5"></div>
                                 </div>
