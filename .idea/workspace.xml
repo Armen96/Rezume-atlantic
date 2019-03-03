@@ -51,8 +51,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/one_signal.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-414">
-              <caret line="55" column="8" selection-start-line="55" selection-start-column="8" selection-end-line="55" selection-end-column="8" />
+            <state relative-caret-position="201">
+              <caret line="55" column="84" selection-start-line="55" selection-start-column="84" selection-end-line="55" selection-end-column="84" />
             </state>
           </provider>
         </entry>
@@ -82,6 +82,7 @@
       <find>Port</find>
       <find>Portfo</find>
       <find>jenkins</find>
+      <find>/cdn.onesignal.com/sdks/OneSignalSD</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -170,12 +171,12 @@
       <workItem from="1550988095121" duration="7140000" />
       <workItem from="1550999854151" duration="16000" />
       <workItem from="1551001417388" duration="9000" />
-      <workItem from="1551638146871" duration="1249000" />
+      <workItem from="1551638146871" duration="1601000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="12752000" />
+    <option name="totallyTimeSpent" value="13104000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
@@ -235,8 +236,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/one_signal.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-414">
-          <caret line="55" column="8" selection-start-line="55" selection-start-column="8" selection-end-line="55" selection-end-column="8" />
+        <state relative-caret-position="201">
+          <caret line="55" column="84" selection-start-line="55" selection-start-column="84" selection-end-line="55" selection-end-column="84" />
         </state>
       </provider>
     </entry>
