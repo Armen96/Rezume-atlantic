@@ -62,6 +62,7 @@ print("\n");
     <div>
 
         <script src="https://cdn.onesignal.com/sdks/OneSignalSDK.js" async></script>
+        <script src="https://cdn.onesignal.com/sdks/OneSignalSDKWorker.js" async></script>
         <script>
             var useragentid = null;
             var OneSignal = window.OneSignal || [];
