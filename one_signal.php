@@ -54,21 +54,100 @@ print("\n");
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
 
 
-    <script src="https://cdn.onesignal.com/sdks/OneSignalSDK.js" async=""></script>
-    <script>
-        var OneSignal = window.OneSignal || [];
-        OneSignal.push(function() {
-            OneSignal.init({
-                appId: "a437566a-4c8d-43c0-91a2-7fee06f5be15",
-            });
-        });
-    </script>
 </head>
 <body>
 
 <div class="container">
     <h1>My First Push Notification Test</h1>
 </div>
+
+
+<script>
+    var useragentid = null;
+    var OneSignal = window.OneSignal || [];
+    OneSignal.push(["init", {
+        appId: "a437566a-4c8d-43c0-91a2-7fee06f5be15",
+        autoRegister: false,
+        notifyButton: {
+            enable: false
+        },
+        persistNotification: false
+    }]);
+    //Firstly this will check user id
+    OneSignal.push(function() {
+        OneSignal.getUserId().then(function(userId) {
+            if(userId == null){
+                document.getElementById('unsubscribe').style.display = 'none';
+            }
+            else{
+                useragentid = userId;
+                document.getElementById('unsubscribe').style.display = '';
+                OneSignal.push(["getNotificationPermission", function(permission){
+                }]);
+                OneSignal.isPushNotificationsEnabled(function(isEnabled) {
+                    if (isEnabled){
+                        document.getElementById('unsubscribe').style.display = '';
+                        document.getElementById('subscribe').style.display = 'none';
+                    }
+                    else{
+                        document.getElementById('unsubscribe').style.display = 'none';
+                        document.getElementById('subscribe').style.display = '';
+                    }
+                });
+            }
+        });
+    });
+    //Secondly this will check when subscription changed
+    OneSignal.push(function() {
+        OneSignal.on('subscriptionChange', function (isSubscribed) {
+            if(isSubscribed==true){
+                OneSignal.getUserId().then(function(userId) {
+                    useragentid = userId;
+                }).then(function(){
+                    // this is custom function
+                    // here you can send post request to php file as well.
+                    OneSignalUserSubscription(useragentid);
+                });
+                document.getElementById('unsubscribe').style.display = '';
+                document.getElementById('subscribe').style.display = 'none';
+            }
+            else if(isSubscribed==false){
+                OneSignal.getUserId().then(function(userId) {
+                    useragentid = userId;
+                });
+                document.getElementById('unsubscribe').style.display = 'none';
+                document.getElementById('subscribe').style.display = '';
+            }
+            else{
+                console.log('Unable to process the request');
+            }
+        });
+    });
+    function subscribeOneSignal(){
+        if(useragentid !=null){
+            OneSignal.setSubscription(true);
+        }
+        else{
+            OneSignal.registerForPushNotifications({
+                modalPrompt: true
+            });
+        }
+    }
+    function unSubscribeOneSignal(){
+        OneSignal.setSubscription(false);
+    }
+</script>
+<div id="home-top" class="clearfix">
+    <p>OneSingle Testing</p>
+    <br>
+    <button id="subscribe" class="button" onclick="subscribeOneSignal()">Subscribe </button>
+    <button id="unsubscribe" class="button" onclick="unSubscribeOneSignal()">Unsubscribe </button>
+</div>
+<style>
+    .button {
+        background-color: #008CBA;border: none;color: white;padding: 15px 32px;text-align: center;text-decoration: none;display: inline-block;font-size: 16px;cursor: pointer;
+    }
+</style>
 
 </body>
 </html>
