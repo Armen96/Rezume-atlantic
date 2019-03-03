@@ -7,7 +7,7 @@ function sendMessage(){
     );
 
     $fields = array(
-        'app_id' => "a437566a-4c8d-43c0-91a2-7fee06f5be15",
+        'app_id' => "xxxxxxxxxxxxxx",
         'included_segments' => array('All'),
         'data' => array("foo" => "bar"),
         'contents' => $content
@@ -20,7 +20,7 @@ function sendMessage(){
     $ch = curl_init();
     curl_setopt($ch, CURLOPT_URL, "https://onesignal.com/api/v1/notifications");
     curl_setopt($ch, CURLOPT_HTTPHEADER, array('Content-Type: application/json; charset=utf-8',
-        'Authorization: Basic OTMxYmIyMjEtODMzMS00NmIyLTk3NWEtY2UzMTcxZjdiOWYx'));
+        'Authorization: Basic xxxxxxxxxxxxxxxxxxxx'));
     curl_setopt($ch, CURLOPT_RETURNTRANSFER, TRUE);
     curl_setopt($ch, CURLOPT_HEADER, FALSE);
     curl_setopt($ch, CURLOPT_POST, TRUE);
@@ -59,16 +59,14 @@ print("\n");
 
 <div class="container">
     <h1>My First Push Notification Test</h1>
-
     <div>
-
         <link rel="manifest" href="/manifest.json" />
         <script src="https://cdn.onesignal.com/sdks/OneSignalSDK.js" async=""></script>
         <script>
             var OneSignal = window.OneSignal || [];
             OneSignal.push(function() {
                 OneSignal.init({
-                    appId: "a437566a-4c8d-43c0-91a2-7fee06f5be15",
+                    appId: "xxxxxxxxxxxxxxxxx",
                 });
             });
         </script>
@@ -81,9 +79,6 @@ print("\n");
                 background-color: #008CBA;border: none;color: white;padding: 15px 32px;text-align: center;text-decoration: none;display: inline-block;font-size: 16px;cursor: pointer;
             }
         </style>
-
-
-
     </div>
 </div>
 
