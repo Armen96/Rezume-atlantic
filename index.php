@@ -96,7 +96,7 @@
                 <ul class="social-links">
                     <li><a class="tip social-button" target="_blank" href="https://github.com/Armen96" title="Github"><i class="fab fa-git-square"></i></a></li> <!-- Full list of social icons: http://fontawesome.io/icons/#brand -->
                     <li><a class="tip social-button" target="_blank" href="https://www.facebook.com/armen.barseghyan.58" title="Facebook"><i class="fab fa-facebook-square"></i></a></li>
-                    <li><a class="tip social-button" target="_blank" href="https://github.com/Armen96" title="Google Plus"><i class="fab fa-github-square"></i></a></li>
+                    <li><a class="tip social-button" target="_blank" href="https://plus.google.com/101976583328119318806" title="Google Plus"><i class="fab fa-google-plus-square"></i></a></li>
                     <li><a class="tip social-button" target="_blank" href="https://www.linkedin.com/in/armen-barsegyan-357336147/" title="Linkedin"><i class="fab fa-linkedin"></i></a></li>
                 </ul>
                 <!-- /Social buttons -->
@@ -139,7 +139,7 @@
                             <div>
                                 <ul class="info-list" style="padding: 0px">
                                     <li><span class="title">Name</span><span class="value">Armen Barsegyan</span></li>
-                                    <li><span class="title">Age</span><span class="value">22</span></li>
+                                    <li><span class="title">Age</span><span class="value">23</span></li>
                                     <li><span class="title">Freelance</span><span class="value available">Available</span></li>
                                 </ul>
                             </div>
