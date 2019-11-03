@@ -52,7 +52,6 @@
 <!-- /Loading animation -->
 
 <div id="page" class="page">
-    <!-- Header -->
     <header id="site_header" class="header">
         <div class="my-photo">
             <img src="armenbarsegyan.jpg" alt="image">
@@ -63,8 +62,8 @@
             <i class="fa fa-bars"></i>
         </a>
     </header>
-    <!-- /Header -->
-
+    <!-- /Header wow -->
+	
     <!-- Main Content -->
     <div id="main" class="site-main">
         <!-- Page changer wrapper -->
